@@ -1,22 +1,14 @@
 public class Solution {
     public int LengthOfLongestSubstring(string s) {
-		string subStringFound = "";
+		Dictionary<char, int> currSubstring = new Dictionary<char, int>();
 		int maxLen = 0;
-		for(int i = 0; i < s.Length; i++) {
-			if (subStringFound.Contains(s[i])) {
-				if(subStringFound != null) {
-					subStringFound = "";
-				}
-				s = s.Substring(1);
-				i = -1;
-			} else {
-				subStringFound += s[i];
+		int start = 0;
+		for(int end = 0; end < s.Length; end++) {
+			if (currSubstring.ContainsKey(s[end])) {
+				start = Math.Max(start, currSubstring[s[end]] + 1);
 			}
-
-			if (subStringFound.Length > maxLen) {
-				maxLen = subStringFound.Length;
-			}
-
+			currSubstring[s[end]] = end;
+			maxLen = Math.Max(maxLen, end - start + 1);
 		}
 		return maxLen;
     }
