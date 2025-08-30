@@ -14,9 +14,10 @@ public class Solution {
         ListNode resultLinkedList = null;
         ListNode prevResultLinkedList = null;
         int remainingNextSum = 0;
+        int resultSum = 0;
         while(l1 != null || l2 != null || remainingNextSum > 0) {
             if(l1 != null && l2 != null) {
-                int resultSum = (l1.val + l2.val + remainingNextSum) % 10;
+                resultSum = (l1.val + l2.val + remainingNextSum) % 10;
                 remainingNextSum = (l1.val + l2.val + remainingNextSum) / 10;
                 if (resultLinkedList == null) {
                     resultLinkedList = new ListNode(resultSum);
@@ -25,7 +26,7 @@ public class Solution {
                     resultLinkedList = new ListNode(resultSum, prevResultLinkedList);
                 }
             } else if (l1 != null) {
-                int resultSum = (l1.val + remainingNextSum) % 10;
+                resultSum = (l1.val + remainingNextSum) % 10;
                 remainingNextSum = (l1.val + remainingNextSum) / 10;
                 if (resultLinkedList == null) {
                     resultLinkedList = new ListNode(resultSum);
@@ -34,7 +35,7 @@ public class Solution {
                     resultLinkedList = new ListNode(resultSum, prevResultLinkedList);
                 }
             } else if (l2 != null) {
-                int resultSum = (l2.val + remainingNextSum) % 10;
+                resultSum = (l2.val + remainingNextSum) % 10;
                 remainingNextSum = (l2.val + remainingNextSum) / 10;
                 if (resultLinkedList == null) {
                     resultLinkedList = new ListNode(resultSum);
@@ -43,7 +44,7 @@ public class Solution {
                     resultLinkedList = new ListNode(resultSum, prevResultLinkedList);
                 }
             } else if (remainingNextSum > 0) {
-                int resultSum = remainingNextSum % 10;
+                resultSum = remainingNextSum % 10;
                 remainingNextSum = remainingNextSum / 10;
                 if (resultLinkedList == null) {
                     resultLinkedList = new ListNode(resultSum);
