@@ -12,9 +12,11 @@ public class Solution {
 			} else {
 				subStringFound += s[i];
 			}
+
 			if (subStringFound.Length > maxLen) {
 				maxLen = subStringFound.Length;
 			}
+
 		}
 		return maxLen;
     }
